@@ -1,13 +1,11 @@
-alphabet: {0, 1, x, z}
+alphabet: {0, 1, x, y}
 start: q0
 
-q0 (0 -> 0,R q1) (1 -> 1,R reject) (x -> x,R reject) (z -> z,R reject) (_ -> _,L reject)
-q1 (0 -> 0,R q1) (1 -> 1,R q2) (x -> x,R reject) (z -> z,R reject) (_ -> _,L reject)
-q2 (1 -> 1,R q2) (0 -> 0,R reject) (x -> x,R reject) (z -> z,R reject) (_ -> _,L q3)
-q3 (0 -> 0,L q3) (1 -> 1,L q3) (x -> x,L q3) (z -> z,L q3) (_ -> _,R q4)
-q4 (0 -> 0,R q4) (x -> x,R q4) (z -> z,R q4) (1 -> 1,L q5) (_ -> _,L accept)
-q5 (0 -> 0,L q5) (1 -> 1,L q5) (x -> x,L q5) (z -> z,L q5) (_ -> _,R q6)
-q6 (z -> z,R q6) (0 -> z,R q7) (1 -> 1,L q9) (x -> x,L q9) (_ -> _,L q9)
-q7 (z -> z,R q7) (0 -> 0,R q7) (x -> x,R q7) (1 -> x,L q8) (_ -> _,L reject)
-q8 (0 -> 0,L q8) (1 -> 1,L q8) (x -> x,L q8) (z -> z,L q8) (_ -> _,R q6)
-q9 (z -> 0,L q9) (0 -> 0,L q9) (1 -> 1,L q9) (x -> x,L q9) (_ -> _,R q4)
+q0 (0 -> 0,R q1) (1 -> 1,R reject) (_ -> _,L accept)
+q1 (0 -> 0,R q1) (1 -> 1,R q2) (_ -> _,L reject)
+q2 (1 -> 1,R q2) (0 -> 0,R reject) (_ -> _,L q3)
+q3 (x -> 0,L q3) (0 -> 0,L q3) (1 -> 1,L q3) (y -> y,L q3) (_ -> _,R q4)
+q4 (x -> x,R q4) (0 -> x,R q5) (1 -> 1,H q6) (y -> y,H q6) (_ -> _,L q6)
+q5 (x -> x,R q5) (0 -> 0,R q5) (y -> y,R q5) (1 -> y,L q7) (_ -> _,L reject)
+q7 (x -> x,L q7) (0 -> 0,L q7) (1 -> 1,L q7) (y -> y,L q7) (_ -> _,R q4)
+q6 (1 -> 1,H q3) (y -> y,R q6) (x -> x,R q6) (0 -> 0,R q6) (_ -> _,L accept)
